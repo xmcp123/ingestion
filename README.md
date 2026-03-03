@@ -11,6 +11,8 @@ AI used was cursor, and a little chatgpt. This is not my preferred setup (would 
 * Rate limits
 * Docker debugging and setup
 * Data submission
+* Debugging
+* Refactoring to class based structure once we had a working setup.
 
 
 ## How to Run
