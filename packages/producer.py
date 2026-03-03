@@ -117,7 +117,7 @@ class API:
         retry_delay: float = 4.0,
     ) -> tuple[list[dict], str | None, bool, dict[str, int] | None]:
         url = f"{self.api_url}/events"
-        params = {"limit": 100000}
+        params = {"limit": 5000}
         if cursor:
             params["cursor"] = cursor
         if self.api_key:
