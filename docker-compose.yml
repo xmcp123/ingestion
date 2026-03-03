@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: assignment-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ingestion
+    ports:
+      - "5434:5432"
+    volumes:
+      - assignment_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - assignment-network
+
+  ingestion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: assignment-ingestion
+    entrypoint: ["/bin/bash", "/var/app/entrypoint.sh"]
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./packages/entrypoint.sh:/var/app/entrypoint.sh:ro
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ingestion
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - assignment-network
+
+volumes:
+  assignment_postgres_data:
+
+networks:
+  assignment-network:
+    driver: bridge
