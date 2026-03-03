@@ -6,7 +6,7 @@ A production-ready ingestion pipeline that extracts event data from the DataSync
 
 AI used was cursor, and a little chatgpt. This is not my preferred setup (would prefer cli based solutions), but this is what is available right now.
 
-* Database table creation (after being show data structures)
+* Database table creation/inserts (after being shown data structures)
 * Initial structure
 * Rate limits
 * Docker debugging and setup
