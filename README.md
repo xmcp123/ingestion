@@ -14,6 +14,7 @@ AI used was cursor, and a little chatgpt. This is not my preferred setup (would 
 * Data submission
 * Debugging
 * Refactoring to class based structure once we had a working setup.
+* Assorted functions (timestamp conversion, etc)
 
 
 ## How to Run
