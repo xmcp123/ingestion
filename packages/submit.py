@@ -34,7 +34,7 @@ EVENTS_TABLE = "ingested_events"
 
 def run_submit() -> None:
     api_url = os.getenv("API_BASE_URL", API_BASE_URL_DEFAULT).rstrip("/")
-    api_key = os.getenv("TARGET_API_KEY") or os.getenv("apiKey") or os.getenv("API_KEY") or ""
+    api_key = os.getenv("TARGET_API_KEY","")
     github_repo = (os.getenv("GITHUB_REPO_URL") or os.getenv("GITHUB_REPO") or "").strip()
     if not github_repo:
         logger.info("GITHUB_REPO_URL not set; skipping submission")
